@@ -3,7 +3,6 @@ const https = require('https');
 
 const S3 = new AWS.S3();
 
-const ACCOUNT_ID = '
 const EVENT_TYPE = 'ConversationAnalysisSample';
 const TRANSCRIPTION_EVENT_TYPE = 'ConversationTranscriptSample';
 
