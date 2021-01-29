@@ -3,6 +3,7 @@ const https = require('https');
 
 const S3 = new AWS.S3();
 
+const ACCOUNT_ID = '
 const EVENT_TYPE = 'ConversationAnalysisSample';
 const TRANSCRIPTION_EVENT_TYPE = 'ConversationTranscriptSample';
 
@@ -101,7 +102,7 @@ const sendEventsToNewRelic = (eventsPayload) => {
         const options = {
           hostname: 'insights-collector.newrelic.com',
           port: 443,
-          path: '/v1/accounts/2564753/events',
+          path: `/v1/accounts/${process.env.NR_ACCOUNT_ID}/events`,
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -129,6 +130,10 @@ const sendEventsToNewRelic = (eventsPayload) => {
 }
 
 exports.handler = async (event) => {
+    if (!process.env.NR_ACCOUNT_ID) {
+      throw "NR_ACCOUNT_ID not set";
+    }
+
     if (!process.env.NR_API_KEY) {
         throw "NR_API_KEY not set";
     }
