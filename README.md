@@ -6,7 +6,7 @@
 
 ## Installation
 
-> Head over to the [Wiki](https://github.com/newrelic/nr-connect/wiki) to get started
+> Head over to the [Wiki](https://github.com/haihongren/nr-connect/wiki) to get started
 
 ## Support
 
